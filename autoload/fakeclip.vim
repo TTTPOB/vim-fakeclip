@@ -23,7 +23,9 @@
 " }}}
 " Platform detection  "{{{1
 
-if has('macunix') || system('uname') =~? '^darwin'
+if index(['lemonade','oclip'], get(g:, 'fakeclip_platform_override',''))>=0
+  let s:PLATFORM=g:fakeclip_platform_override
+elseif has('macunix') || system('uname') =~? '^darwin'
   let s:PLATFORM = 'mac'
 elseif system('cat /proc/sys/kernel/osrelease') =~? 'Microsoft'
   let s:PLATFORM = 'wsl'
